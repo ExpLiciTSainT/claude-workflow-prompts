@@ -12,9 +12,10 @@ Run the phase:
 3. Reviews on the real output, as agents: the picture reviewer (AGY) on the pictures, the strips at speed and the video; an Opus 5.5 adversarial agent at high; Grok on code and numbers. Each returns one line per finding (id, severity, claim, evidence path, fix). No verifiers; the director asks the driver for the workflow when its trigger is met.
 4. Write PACKETS/<phase>_handback.md: the lane's 20 lines and the three tables copied verbatim, no prose of yours; cap 120 lines; over it, add a Sonnet digest, keep the full tables at a path, and log the cut in the packet.
 5. If the plan pre-ruled this phase ("on an all-pass proceed to <next>") and every reviewer passed with no findings, say so in your return; the driver still sends the packet to the director.
-6. Review content for the human: every item the brief says they judge is made at native size in the game, from every view, placed only in the review folder with one pointer line, nothing they already reviewed.
+6. Review content for the human: every item the brief says they judge is made at native size in the game, from every view, placed only in the review folder the brief names, nothing they already reviewed; their paths go in the packet (the director writes the pointer lines).
 7. On a failure you cannot fix inside the brief (a method's second failure, a missing input, a tool down): write PACKETS/<phase>_problem.md (what failed in one line, evidence path, the tries, what the lane and reviewers think the cause is, what it blocks) and return "blocked".
-8. Cleanup before returning: close windows, remove worktrees and temporary files you made, clear RUNNING in STATE.md; put the ledger numbers in your return (tokens from the task notifications: spent for the result, wasted, lost to redo, forgot).
+8. If the brief says the phase closes a milestone, also write PACKETS/<milestone>_checkpoint.md (every phase's status, the items ready for the human with a path per view, what remains) and return "checkpoint".
+9. Cleanup before returning: close windows, remove worktrees and temporary files you made, clear RUNNING in STATE.md; put the ledger numbers in your return (tokens from the task notifications: spent for the result, wasted, lost to redo, forgot).
 
-Return at most 20 lines: the phase, pass or fail per bar, one line per reviewer finding (id, severity, claim, evidence path, fix), the packet path, the review content paths, "done" / "all-pass" / "blocked", what is open, the ledger numbers.
+Return at most 20 lines: the phase, pass or fail per bar, one line per reviewer finding (id, severity, claim, evidence path, fix), the packet path, the review content paths, "done" / "all-pass" / "checkpoint" / "blocked" as the last line, what is open, the ledger numbers.
 ```

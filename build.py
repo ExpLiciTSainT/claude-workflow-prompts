@@ -27,7 +27,7 @@ PRESETS = {
     "Minimal (one phase: Opus orchestrator, one Sonnet lane, AGY and Opus look once)":
         ["00-models-and-effort", "04-lane-brief", "06-human-review-points", "07-forgetting-and-order-guard",
          "09-decision-to-human"],
-    "Two windows (Fable 5.1 director window you drive, Sonnet 5.5 high driver window, a fresh operator per phase; no script, nothing to clear)":
+    "Two windows (paste into the Fable 5.1 xhigh director window you drive; the Sonnet 5.5 high driver window gets block 14 alone; a fresh operator per phase; no script, nothing to clear)":
         ["00-models-and-effort", "13-director-window-fable", "14-driver-window-sonnet", "15-operator-phase-agent",
          "16-project-files-and-packets", "04-lane-brief", "05-review-and-fix-loop", "06-human-review-points",
          "07-forgetting-and-order-guard", "09-decision-to-human", "11-token-ledger"],
