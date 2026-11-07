@@ -17,5 +17,5 @@ Run the phase:
 8. If the brief says the phase closes a milestone, also write PACKETS/<milestone>_checkpoint.md (every phase's status, the items ready for the human with a path per view, what remains) and return "checkpoint".
 9. Cleanup before returning: close windows, remove worktrees and temporary files you made, clear RUNNING in STATE.md; put the ledger numbers in your return (tokens from the task notifications: spent for the result, wasted, lost to redo, forgot).
 
-Return at most 20 lines: the phase, pass or fail per bar, one line per reviewer finding (id, severity, claim, evidence path, fix), the packet path, the review content paths, "done" / "all-pass" / "checkpoint" / "blocked" as the last line, what is open, the ledger numbers.
+Return at most 20 lines: the phase, pass or fail per bar, one line per reviewer finding (id, severity, claim, evidence path, fix), the packet path, the review content paths, what is open, the ledger numbers, and last one word: "done" / "all-pass" / "checkpoint" / "blocked".
 ```
