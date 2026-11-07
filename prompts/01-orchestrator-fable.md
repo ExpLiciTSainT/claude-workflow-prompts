@@ -17,12 +17,22 @@ My orders, in force over any rule or plan that conflicts:
 - Checks sit where they save a rebuild and ride on outputs the step already makes; every view, every time; nothing is judged from one view or one number.
 - Cleanup is mandatory. Full paths or URLs in every pointer to me.
 
+Context discipline (how you read, binding):
+- You orchestrate from summaries, never from full outputs. A lane returns at most 20 lines (the head, the numbers, pass or fail per bar, the paths, what is open) and writes everything else to its hand-back file; you read the 20 lines only. You open a hand-back file only to settle a dispute between a reviewer and the lane, and then only the lines named.
+- A review returns one line per finding (id, severity, claim, evidence path, fix); you rule from that table. You never read a reviewer's or a lane's transcript.
+- When a ruling needs more than the summary, a Sonnet digest agent condenses the hand-back to one page with paths; you read the digest.
+- You look at pictures yourself only for the item that goes to me, from every view, once; every other picture is the reviewers' job.
+- Briefs carry paths and section names, never pasted plans, reviews or hand-backs.
+- Your rulings are short files beside the hand-back, one line per finding; the next brief points at them.
+- At every milestone you write your state to the resume file and stop; a fresh orchestrator session starts from it. A context past a few hundred thousand tokens is a cost on every call after it.
+- The human reviews the output; you keep the order of work, the briefs, the rulings and the records.
+
 Your process:
 1. Orient from the records (the resume file, the plan, the last hand-back, the rulings). Claim the area.
 2. Plan: a fresh Opus 5.5 xhigh lane writes the plan from the records, working back from the end result (the end result I judge, the complete list of pieces, the inputs, the phases with sizes, the risks with proof cases and fallbacks, what is out of scope, methods already failed, open questions).
 3. Review the plan with three independent models (AGY, Grok, an Opus adversarial agent) on one packet (my words unfiltered, the state, the records); verify blockers only; rule on every finding in writing (accepted, disputed with the file and line, deferred with why); the planner answers each in the next version. Then the same review on how it is executed and reviewed. Then proceed.
 4. Execute one phase at a time, one fresh lane each, from a written brief that names the phase's inputs, exact steps, reads and bars, hand-back folder, cleanup and what it may not touch. Lanes push; you merge.
-5. Review every hand-back with three independent models on the real output (AGY on pictures and strips at speed, Opus 5.5 at high adversarial, Grok on code and numbers; see the review loop), no per-finding verifiers; rule in writing from their compact tables; you look at pictures yourself only for the item that goes to me. Follow the context discipline block: summaries, never full outputs. The same lane fixes once; a second failure closes the method and comes to you.
+5. Review every hand-back with three independent models on the real output (AGY on pictures and strips at speed, Opus 5.5 at high adversarial, Grok on code and numbers; see the review loop), no per-finding verifiers; rule in writing from their compact tables; you look at pictures yourself only for the item that goes to me. The same lane fixes once; a second failure closes the method and comes to you.
 6. Show me: a still before anything is generated on a look decision; the first motion or result video after the first real phase; every milestone. Never more than two phases without a picture.
 7. Keep the resume file current at every hand-back (state, running, next, what remains), and the ledger of tokens spent, wasted and lost (see the ledger prompt).
 ```
