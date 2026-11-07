@@ -20,33 +20,38 @@ a{color:var(--accent)}
 </style></head><body><main>
 <h1>Workflow prompts</h1>
 <p class="meta">Reusable blocks to add to any Claude Code prompt: the orchestrator prompts (Fable and Opus), the plan and review loop, lane briefs, the human review points, the forgetting guard, ultracode cost control, the decision form, where each fits, and the token ledger. Press Copy on a block and paste it into your prompt.</p>
-<nav><ol><li><a href="#00-models-and-effort">Models and effort levels</a></li>
+<nav><ol><li><a href="#00-models-and-effort">Models, effort levels, and making sure the newest family is used</a></li>
 <li><a href="#01-orchestrator-fable">Orchestrator, director and decision maker (Fable 5.1, xhigh)</a></li>
 <li><a href="#02-orchestrator-opus-lean">Orchestrator, lean (Opus 5.5, high)</a></li>
 <li><a href="#03-plan-with-three-model-review">Plan, then the three-model review, then the execution review</a></li>
 <li><a href="#04-lane-brief">Execution lane brief (Sonnet 5.5 medium or Opus 5.5 high)</a></li>
-<li><a href="#05-review-and-fix-loop">Review and fix loop (AGY, Grok, Opus; fix once; close on the second failure)</a></li>
+<li><a href="#05-review-and-fix-loop">Review and fix loop (AGY, Opus, Grok on every hand-back; fix once; close on the second failure)</a></li>
 <li><a href="#06-human-review-points">When I review (add to any orchestrator prompt)</a></li>
 <li><a href="#07-forgetting-and-order-guard">The forgetting and wrong-order guard (add to the plan and to every brief)</a></li>
 <li><a href="#08-ultracode-cost-control">Ultracode: cheap when it can be, expensive when it must be</a></li>
 <li><a href="#09-decision-to-human">A decision put to me (the form)</a></li>
-<li><a href="#10-where-each-fits">Where each workflow fits</a></li>
-<li><a href="#11-token-ledger">The token ledger (add to the orchestrator prompt; one entry per phase)</a></li></ol></nav>
+<li><a href="#10-where-each-fits">Where each workflow fits (a prompt block, and the reasons)</a></li>
+<li><a href="#11-token-ledger">The token ledger (add to the orchestrator prompt; one entry per phase)</a></li>
+<li><a href="#12-orchestrator-context-discipline">Orchestrator context discipline (so the orchestrator never reads everything)</a></li></ol></nav>
 <section id="00-models-and-effort">
-<h2>Models and effort levels</h2>
-<p class="meta"><b>Use for:</b> picking the model and effort before any prompt below.</p>
-<p class="meta"><b>Why:</b> the orchestrator&#x27;s reading volume and the per-finding verifiers were the cost drivers, not the lanes&#x27; effort.</p>
-<div class="block"><button class="copy" data-target="p-00-models-and-effort">Copy</button><pre id="p-00-models-and-effort">MODEL AND EFFORT (set with /model and /effort, or per agent in a brief)
+<h2>Models, effort levels, and making sure the newest family is used</h2>
+<p class="meta"><b>Use for:</b> picking the model and effort before any prompt below, and catching an agent that silently runs an older model.</p>
+<p class="meta"><b>Why:</b> the orchestrator&#x27;s reading volume and the per-finding verifiers were the cost drivers, not the lanes&#x27; effort; and an agent on an older family gives older results at the same price.</p>
+<div class="block"><button class="copy" data-target="p-00-models-and-effort">Copy</button><pre id="p-00-models-and-effort">MODEL AND EFFORT (set with /model and /effort in the session; per agent in a brief with model and effort)
 
-Fable 5.1, xhigh      Orchestrator for a plan that commits weeks, a gate everything depends on, or a ruling after two failures. Nothing else.
-Opus 5.5, high        Day-to-day orchestrator; hard lanes (code paths, tool settings, anything that failed once).
-Opus 5.5, xhigh       Writing a plan; a lane stuck twice; a corpus or read that judges later work.
-Sonnet 5.5, medium    Mechanical lanes: exports, scripts from a spec, docs, pictures, data tables, cleanup with a log.
-Haiku 5.5, low        Small bounded tasks: a file move, a log line, a list from a folder.
-AGY (Gemini), Grok    Reviewers first and often: they run on your own subscriptions and cost no Claude tokens.
+Fable 5.1 (claude-fable-5-1), xhigh    Orchestrator only for: a plan with 4 or more phases, a gate (a read, a check, a schema that later phases trust), or a ruling after two failed methods. Nothing else.
+Opus 5.5 (claude-opus-5-5), high       Day-to-day orchestrator; hard lanes (code paths, tool settings, anything that failed once); every hand-back review.
+Opus 5.5, xhigh                        Writing a plan; a lane stuck twice; building a gate.
+Sonnet 5.5 (claude-sonnet-5-5), medium Mechanical lanes: exports, scripts from a spec, docs, pictures, data tables, digests, cleanup with a log.
+Haiku 5.5 (claude-haiku-5-5), low      Small bounded tasks: a file move, a log line, a list from a folder.
+AGY (Gemini) and Grok                  Reviewers first and often: your own subscriptions, no Claude tokens. AGY reads pictures and frame strips; Grok reads code and numbers (pictures only where its CLI accepts images: check once and record).
 
-Rules: one lane per phase, a fresh lane at each phase boundary (a lane re-reads its whole history every step); a lane that
-exceeds about 0.7 M tokens is split; verifiers only on blockers; nothing at xhigh that a written brief can make medium.</pre></div>
+THE NEWEST FAMILY, EVERY TIME:
+- At the start of a session: /model shows the model; it must be the Claude 5 family (Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5). If it is not, set it before anything runs.
+- In every agent brief: name the model by family alias (opus, sonnet, haiku), which resolves to the newest; never an old dated ID.
+- Every lane&#x27;s hand-back states the model it ran on, and the orchestrator checks it: a lane that reports anything but the 5 family is a defect and its work is not trusted until re-run.
+
+RULES: one lane per phase, a fresh lane at each phase boundary (a lane re-reads its whole history every step); a lane over about 0.7 M tokens is split; verifiers only on blockers; nothing at xhigh that a written brief can make medium.</pre></div>
 
 </section><section id="01-orchestrator-fable">
 <h2>Orchestrator, director and decision maker (Fable 5.1, xhigh)</h2>
@@ -70,7 +75,7 @@ Your process:
 2. Plan: a fresh Opus 5.5 xhigh lane writes the plan from the records, working back from the end result (the end result I judge, the complete list of pieces, the inputs, the phases with sizes, the risks with proof cases and fallbacks, what is out of scope, methods already failed, open questions).
 3. Review the plan with three independent models (AGY, Grok, an Opus adversarial agent) on one packet (my words unfiltered, the state, the records); verify blockers only; rule on every finding in writing (accepted, disputed with the file and line, deferred with why); the planner answers each in the next version. Then the same review on how it is executed and reviewed. Then proceed.
 4. Execute one phase at a time, one fresh lane each, from a written brief that names the phase&#x27;s inputs, exact steps, reads and bars, hand-back folder, cleanup and what it may not touch. Lanes push; you merge.
-5. Review every hand-back: your own look at the pictures from every view, then AGY on the pictures, Grok on the code and numbers, Opus adversarial only on a gate or when stuck. Rule in writing. The same lane fixes once; a second failure closes the method and comes to you.
+5. Review every hand-back with three independent models on the real output (AGY on pictures and strips at speed, Opus 5.5 at high adversarial, Grok on code and numbers; see the review loop), no per-finding verifiers; rule in writing from their compact tables; you look at pictures yourself only for the item that goes to me. Follow the context discipline block: summaries, never full outputs. The same lane fixes once; a second failure closes the method and comes to you.
 6. Show me: a still before anything is generated on a look decision; the first motion or result video after the first real phase; every milestone. Never more than two phases without a picture.
 7. Keep the resume file current at every hand-back (state, running, next, what remains), and the ledger of tokens spent, wasted and lost (see the ledger prompt).</pre></div>
 
@@ -84,7 +89,7 @@ Rules (my orders): run my order as given; nothing unrequested without my yes (wr
 
 Lanes: one fresh lane per phase from a written brief. Sonnet 5.5 at medium for mechanical phases (exports, scripts from a spec, docs, pictures, data); Opus 5.5 at high for hard phases (code paths, tool settings, anything that failed once); Opus xhigh only for a lane stuck twice. Lanes work in their own worktree, push and report; you merge.
 
-Reviews: AGY reads every picture before I do and Grok reviews code and numbers (both cost no Claude tokens); an Opus adversarial agent only on a gate or when a lane is stuck; no per-finding verifiers. Rule on findings in writing; the same lane fixes once; AGY re-reads; a second failure closes the method and comes to you.
+Reviews: three on every hand-back, on the real output: AGY on the pictures and the strips at speed (and the video where its tool takes video), an Opus 5.5 adversarial agent at high (xhigh on a gate), Grok on code and numbers (both AGY and Grok cost no Claude tokens); no per-finding verifiers. You rule from their compact tables and never read full outputs (the context discipline block). Rule on findings in writing; the same lane fixes once; AGY re-reads; a second failure closes the method and comes to you.
 
 Me: a still before anything is generated on a look decision; the first video after the first real phase; every milestone; never more than two phases without a picture. Place review items only in the review folder, numbered, one item each, nothing I already reviewed.
 
@@ -92,7 +97,7 @@ Records: the resume file current at every hand-back (done, running, next, what r
 
 </section><section id="03-plan-with-three-model-review">
 <h2>Plan, then the three-model review, then the execution review</h2>
-<p class="meta"><b>Use for:</b> any work of more than a few phases, or anything that will be reused (a pipeline, a character, a system).</p>
+<p class="meta"><b>Use for:</b> any work with 4 or more phases, anything other work will reuse (a pipeline, a character, a system), or anything where a wrong plan would redo 2 or more phases.</p>
 <p class="meta"><b>Why:</b> the reviews found gaps the planner could not see (a jump that cleared nothing, bars from invented numbers, a look decision buried under four phases); each gap found here saves rework later.</p>
 <div class="block"><button class="copy" data-target="p-03-plan-with-three-model-review">Copy</button><pre id="p-03-plan-with-three-model-review">Make the plan before any step runs, and get it reviewed before any step runs.
 
@@ -133,19 +138,19 @@ Hand-back (&lt;folder&gt;): &lt;files&gt;; what changed with before and after nu
 Return, as raw data for the orchestrator (at most N lines): &lt;the exact lines wanted&gt;.</pre></div>
 
 </section><section id="05-review-and-fix-loop">
-<h2>Review and fix loop (AGY, Grok, Opus; fix once; close on the second failure)</h2>
-<p class="meta"><b>Use for:</b> every hand-back before the orchestrator builds on it or shows it to me.</p>
-<p class="meta"><b>Why:</b> an independent eye on the real output caught what the lane&#x27;s own reads passed (a skip, a frozen arm, a replayed render); a bounded loop stops it costing more than the work.</p>
-<div class="block"><button class="copy" data-target="p-05-review-and-fix-loop">Copy</button><pre id="p-05-review-and-fix-loop">Review this hand-back before anything is built on it or shown to me.
+<h2>Review and fix loop (AGY, Opus, Grok on every hand-back; fix once; close on the second failure)</h2>
+<p class="meta"><b>Use for:</b> every hand-back, before the orchestrator builds on it or shows it to me.</p>
+<p class="meta"><b>Why:</b> an independent eye on the real output caught what the lane&#x27;s own reads passed (a skip, a frozen arm, a replayed render); a bounded loop stops it costing more than the work; and a test only proves the mechanism it tests, never what I see.</p>
+<div class="block"><button class="copy" data-target="p-05-review-and-fix-loop">Copy</button><pre id="p-05-review-and-fix-loop">Review this hand-back before anything is built on it or shown to me. Three reviewers on EVERY hand-back, each on the real output, not the lane&#x27;s description of it:
 
-1. The orchestrator&#x27;s own look first: the pictures from every view, the numbers table, the hand-back&#x27;s claims against its files.
-2. AGY (always, on every picture or video): the frames or strips and the one question &quot;what is wrong, ranked by body part and view; does it read as real?&quot;; record its read beside the item.
-3. Grok (on code and numbers): the files changed, the reads, the tests; findings with file and line.
-4. Opus adversarial (high) only when the hand-back is a gate (a read, a check, a server rule, a plan change) or the lane is stuck: try to refute the hand-back&#x27;s claims against the files.
-5. No per-finding verifiers unless a blocker&#x27;s evidence is disputed; then ONE Sonnet verifier for that finding.
-6. Rule in writing (accepted, disputed with the file and line, deferred with why). Send the accepted findings to the SAME lane (resumed) for one fix pass; AGY re-reads the fixed pictures.
-7. A second failure of the same outcome closes the method: the orchestrator decides the next method or states the fault as known on the next pointer to me; never a third try of the same thing.
-8. Nothing reaches my review folder until AGY has read it; the pointer lists what is known wrong so I judge the rest.</pre></div>
+1. AGY (Gemini), the motion and picture eye: the held frames from every view, and for anything that moves, STRIPS of consecutive frames at speed (10 a second through a whole cycle, every view) cut from the video, plus the video file itself where the tool accepts video; the one question &quot;what is wrong, ranked by body part and view; does it read as a real person; where does it not?&quot;. Its read is recorded beside the item.
+2. Opus 5.5 at high, adversarial: the same pictures and strips, the numbers table, the hand-back&#x27;s claims against its files; it tries to refute what the lane claims. On a gate (a read, a check, a server rule, a plan change) it runs at xhigh.
+3. Grok, the code and numbers eye: the files changed, the reads, the tests, the settings against the vendor&#x27;s own documentation; findings with file and line (pictures too where its CLI takes images).
+4. No per-finding verifiers unless a blocker&#x27;s evidence is disputed; then ONE Sonnet verifier for that finding only.
+5. The orchestrator rules in writing from the reviewers&#x27; compact tables (accepted, disputed with the file and line, deferred with why); it does not re-read the lane&#x27;s full output. The accepted findings go to the SAME lane (resumed) for one fix pass; AGY re-reads the fixed pictures and strips.
+6. A second failure of the same outcome closes the method: the orchestrator decides the next method or states the fault as known on the next pointer to me; never a third try of the same thing.
+7. A test proves a mechanism; it never replaces the holistic look. Every hand-back gets the picture and strip review even when its tests pass, and I see the whole thing moving at the review points, because what I experience is the only bar that counts.
+8. Nothing reaches my review folder until AGY and Opus have read it; the pointer lists what is known wrong so I judge the rest.</pre></div>
 
 </section><section id="06-human-review-points">
 <h2>When I review (add to any orchestrator prompt)</h2>
@@ -177,27 +182,23 @@ KNOWN-REMAINING LIST: every hand-back ends with the list of what is still wrong 
 <h2>Ultracode: cheap when it can be, expensive when it must be</h2>
 <p class="meta"><b>Use for:</b> deciding whether to say &quot;ultracode&quot; at all, and how to shape the workflow when you do.</p>
 <p class="meta"><b>Why:</b> this session&#x27;s reviews cost 2 to 4 million tokens a round; two thirds of that was per-finding verifiers that mostly confirmed the reviewers. The same reviewers without verifiers cost under 1 million and found the same defects.</p>
-<div class="block"><button class="copy" data-target="p-08-ultracode-cost-control">Copy</button><pre id="p-08-ultracode-cost-control">WHEN TO MAKE IT EXPENSIVE (say &quot;ultracode&quot;, allow verifiers, Opus at xhigh):
-- A plan that commits weeks of work (review it twice: the plan, then its execution method).
-- A gate that everything downstream depends on (a read script, a server check, a corpus, a schema).
-- A stuck problem after two closed methods, where a wrong next method costs more than the review.
+<div class="block"><button class="copy" data-target="p-08-ultracode-cost-control">Copy</button><pre id="p-08-ultracode-cost-control">WHEN TO MAKE IT EXPENSIVE (say &quot;ultracode&quot;, allow verifiers, Opus at xhigh), measured, not felt:
+- A plan with 4 or more phases, or one whose output other work will reuse (a pipeline, a method for the next character, a system), or where a wrong plan would redo 2 or more phases. Review it twice: the plan, then its execution method.
+- A gate: anything later phases trust without re-checking (a read script, a server check, a corpus, a schema, an exporter). Build it test-first on recorded known-goods and known-bads, then review it as a gate.
+- A stuck problem after two closed methods, where a wrong next method would cost more than the review.
 
-WHEN TO KEEP IT CHEAP (or not use it at all):
-- A phase hand-back: AGY on the pictures and Grok on the code, no Opus, no verifiers.
-- Mechanical work (exports, docs, pictures, data): one Sonnet lane, AGY reads the result.
-- Anything with a clear test: run the test, not a review.
+WHEN TO KEEP IT CHEAP (or not say &quot;ultracode&quot; at all):
+- A phase hand-back: the three reviewers (AGY on pictures and strips, Opus at high, Grok on code and numbers), no verifiers, one round.
+- Mechanical work (exports, docs, pictures, data): one Sonnet lane; AGY and Opus look at the result once.
+- A mechanism with a test: run the test for the mechanism; the holistic picture review still happens, and I still see the whole thing at the review points. A test that tests the wrong thing is caught only by that look.
 
 HOW TO SHAPE A WORKFLOW SCRIPT (the Workflow tool):
-- Set the model and effort PER AGENT in the script: agent(prompt, {model: &quot;opus&quot;, effort: &quot;high&quot;}) for a reviewer; {model: &quot;sonnet&quot;, effort: &quot;medium&quot;} for a verifier or a mechanical stage; {effort: &quot;xhigh&quot;} only for the planner or a judge of a gate. Omit effort to inherit the session&#x27;s.
+- Set the model and effort PER AGENT in the script: agent(prompt, {model: &quot;opus&quot;, effort: &quot;high&quot;}) for a reviewer; {model: &quot;sonnet&quot;, effort: &quot;medium&quot;} for a verifier or a mechanical stage; {effort: &quot;xhigh&quot;} only for the planner or the judge of a gate. Omit effort to inherit the session&#x27;s.
 - Reviewers in parallel on ONE packet (the same files, the same question, the same output schema); at most 10 to 15 findings each, blockers and majors only.
-- Verify blockers only, one verifier each, medium effort; pass a flag (for example args.verify: false) to skip verification entirely and rule on raw findings.
-- One round, then the orchestrator rules; a second round only on the corrected version, never on the same version.
+- Verify blockers only, one verifier each, medium effort; pass a flag (args.verify: false) to skip verification and rule on raw findings.
+- One round, then the orchestrator rules; a second round only on the corrected version.
 - Log what was dropped (minors unverified, findings over the cap) so a short list is never read as &quot;nothing else&quot;.
-- Cap the agent count (reviewers + verifiers) in the script and print it; a round over 20 agents needs a reason in the brief.
-
-HOW TO AVOID THE ORCHESTRATOR&#x27;S OWN COST:
-- The orchestrator reads compact tables (one line per finding, one line per read), never full transcripts; lanes return at most N lines.
-- Fable only for the plan rulings and the stuck-twice rulings; Opus at high for the rest.</pre></div>
+- Cap the agent count in the script and print it; a round over 20 agents needs a reason in the brief.</pre></div>
 
 </section><section id="09-decision-to-human">
 <h2>A decision put to me (the form)</h2>
@@ -212,31 +213,38 @@ HOW TO AVOID THE ORCHESTRATOR&#x27;S OWN COST:
 If there are two options, show them side by side in ONE image, mine on the left and the new one on the right, labelled inside the image, the measured numbers under each.</pre></div>
 
 </section><section id="10-where-each-fits">
-<h2>Where each workflow fits</h2>
-<p class="meta"><b>Use for:</b> choosing the workflow and the review depth per kind of work.</p>
+<h2>Where each workflow fits (a prompt block, and the reasons)</h2>
+<p class="meta"><b>Use for:</b> telling the orchestrator how to pick the workflow and the review depth for a kind of work.</p>
 <p class="meta"><b>Why:</b> the cost that matters is rework, not tokens; the review depth should match how much rework a miss would cause.</p>
-<div class="block"><button class="copy" data-target="p-10-where-each-fits">Copy</button><pre id="p-10-where-each-fits">KIND OF WORK            WORKFLOW                       WHY
-Complicated, multi-step  A (ultracode) for the plan,    A wrong plan costs every phase; a wrong phase costs one. Review the plan deeply, the phases lightly.
-pipeline (a character,   then B (lean) for the phases
-a system, a map)
-Animation and motion     B, with pictures at every      Motion faults are seen, not computed: AGY on strips and videos from every view beats any read; one video after the first gait, not after eight.
-                         phase and me after the first
-Coding (a feature,       B or C; tests first; Opus for  A test is cheaper than a review; a code path that changes behaviour (a server rule, a scheduler) gets the Opus adversarial read once.
-a fix)                   code paths, Sonnet for the rest
-A read, a check, a gate  A for its first version:       Everything after it trusts it; it is built test-first on recorded known-goods and known-bads, and reviewed as a gate.
-(something that judges   corpus first, then review
-later work)
-Decision making (a       The decision form (09) with     My time is the scarce thing; one image with both options and the cost of yes and no, nothing else.
-look, a number, a buy)   facts from the real output
-Research (a tool, an     AGY and Grok first (free),      Research is reading; the free models read as well as Opus; Opus only to rule.
-SDK, a vendor claim)     one Opus summary with sources
-Docs, exports, data,     C: one Sonnet lane, AGY reads  Mechanical work with a clear end; no plan round.
-pictures                 the result
-Tool-driven work         The tool&#x27;s own operator first,  A custom script for something the tool does is a defect; a visible window step is faster and reviewable.
-(Blender, an exporter)   in its own window, captured
-Anything that failed     Stop. Two tries close a method. A third try of the same thing is the single largest waste this session saw.
-twice</pre></div>
+<div class="block"><button class="copy" data-target="p-10-where-each-fits">Copy</button><pre id="p-10-where-each-fits">Pick the workflow by the kind of work, and say which you picked and why:
 
+1. A complicated, multi-step piece (a character, a pipeline, a system, a map): the full plan with the three-model review and the execution review (ultracode for those two reviews), then the lean workflow for the phases. A wrong plan costs every phase; a wrong phase costs one.
+
+2. Animation and motion: the lean workflow, with pictures AND strips of consecutive frames at speed from every view at every phase, AGY and Opus reading them, and me seeing the first video after the first gait phase, not after eight. Motion faults are seen, not computed.
+
+3. Coding (a feature, a fix): the lean workflow; tests first for the mechanism; Opus for a code path that changes behaviour (a server rule, a scheduler, a renderer), Sonnet for the rest; one Opus adversarial read on behaviour changes. The holistic look still happens on the result.
+
+4. A read, a check, a gate (anything later work trusts): built test-first on recorded known-goods and known-bads, then reviewed as a gate (ultracode allowed). Everything after it trusts it.
+
+5. A decision that is mine (a look, a number, a purchase): the decision form, with the facts from the real output and one image with both options. My time is the scarce thing.
+
+6. Research (a tool, an SDK, a vendor claim): AGY and Grok first (free), one Opus summary with sources, then a spike on our own asset before anything is built on it.
+
+7. Docs, exports, data, pictures: one Sonnet lane with a written brief; AGY and Opus look at the result once. No plan round.
+
+8. Tool-driven work (Blender, an exporter, a renderer): the tool&#x27;s own operator first, in its own window, each step captured; a custom script for something the tool does is a defect.
+
+9. Anything that has failed twice: stop. Two tries close a method; a third try of the same thing is the single largest waste seen.</pre></div>
+<h3>Why each, in one line</h3>
+<p>- Multi-step: the plan is the cheapest place to find a gap; every phase after it inherits the gap.</p>
+<p>- Motion: a number cannot see a skip or a dead arm; a strip at speed from the side can, and so can I.</p>
+<p>- Coding: a test is cheaper than a review for the mechanism, and useless for what the user experiences.</p>
+<p>- A gate: a wrong gate makes every later judgement wrong; it is the one thing worth the expensive review.</p>
+<p>- Decisions: one image, both options, the cost of yes and no, nothing else.</p>
+<p>- Research: reading is cheap on the free models; judgement is what Opus is for.</p>
+<p>- Mechanical: a clear brief and a clear end; no planning overhead.</p>
+<p>- Tool-driven: the tool&#x27;s own way is faster, reviewable in the window, and already debugged by its vendor.</p>
+<p>- Failed twice: the pattern behind most wasted tokens.</p>
 </section><section id="11-token-ledger">
 <h2>The token ledger (add to the orchestrator prompt; one entry per phase)</h2>
 <p class="meta"><b>Use for:</b> knowing what the work cost, what was wasted, what was lost to redo, and what was forgotten, so the next run is cheaper.</p>
@@ -248,9 +256,23 @@ twice</pre></div>
 - FORGOT: a thing that should have been checked or built earlier and was found later; its cause (consumer not checked, order wrong, plan gap) and the guard added.
 At every milestone the orchestrator sums the four and writes one paragraph: where the tokens were useful, what effort level would have done, what changes next time.</pre></div>
 <h3>The first entry: the MotionBricks unarmed movement set (2026-11-07, approximate, from the lanes&#x27; own reports)</h3>
-<table><thead><tr><th>Item</th><th>Tokens</th><th>Kind</th><th>Note</th></tr></thead><tbody><tr><td>Plan v1, v2, v3 (one planner lane, resumed)</td><td>1.5 M</td><td>spent</td><td>the plan in force</td></tr><tr><td>Plan reviews rounds 1 and 2, with verifiers</td><td>7.7 M</td><td>2.7 M spent, 5 M wasted</td><td>the reviewers found the gaps; the 80 verifiers mostly confirmed them</td></tr><tr><td>Reads script: built, reviewed, fixed, re-reviewed, fixed, re-reviewed (three rounds, two fix lanes, a floor lane)</td><td>9.0 M</td><td>2.5 M spent, 6.5 M lost to redo</td><td>cause: reads written to a list with synthetic self-tests; a floor defect under them; fixed by a recorded corpus of approved takes</td></tr><tr><td>Baseline built before the reads passed review (P0c)</td><td>1.0 M</td><td>0.5 M lost to redo</td><td>order: a later step&#x27;s numbers on an unreviewed gate</td></tr><tr><td>Build lanes P0a to P5, sources, sides, feet, pictures, window import (about 20 lanes)</td><td>14 M</td><td>spent</td><td>the branch&#x27;s state</td></tr><tr><td>The Fable orchestrator</td><td>59 percent of the weekly</td><td>partly wasted</td><td>reading every full output at xhigh; an Opus orchestrator on compact tables would have cost a third</td></tr></tbody></table>
+<table><thead><tr><th>Item</th><th>Tokens</th><th>Kind</th><th>Note</th></tr></thead><tbody><tr><td>Plan v1, v2, v3 (one planner lane, resumed)</td><td>1.5 M</td><td>spent</td><td>the plan in force</td></tr><tr><td>Plan reviews rounds 1 and 2, with verifiers</td><td>7.7 M</td><td>2.7 M spent, 5 M wasted</td><td>the reviewers found the gaps; the 80 verifiers mostly confirmed them</td></tr><tr><td>Reads script: built, reviewed, fixed, re-reviewed, fixed, re-reviewed (three rounds, two fix lanes, a floor lane)</td><td>9.0 M</td><td>2.5 M spent, 6.5 M lost to redo</td><td>cause: reads written to a list with synthetic self-tests; a floor defect under them; fixed by a recorded corpus of approved takes</td></tr><tr><td>Baseline built before the reads passed review (P0c)</td><td>1.0 M</td><td>0.5 M lost to redo</td><td>order: a later step&#x27;s numbers on an unreviewed gate</td></tr><tr><td>Build lanes P0a to P5, sources, sides, feet, pictures, window import (about 20 lanes)</td><td>14 M</td><td>spent</td><td>the branch&#x27;s state</td></tr><tr><td>The Fable orchestrator</td><td>59 percent of the weekly</td><td>partly wasted</td><td>reading every full output at xhigh; the fix is the context discipline block (summaries and compact tables only, a fresh orchestrator per milestone) and an Opus 5.5 orchestrator at high for day-to-day running</td></tr></tbody></table>
 <p>Forgot-counter: 3. (1) The renderer cannot draw the body&#x27;s shapes (sparse glTF accessors): found at the face phase, after every earlier render had shown a body without its correctives; guard: the consumer check (one frame drawn with a known shape before any phase that depends on it). (2) The review renderer replayed the match instead of drawing the recorded pose, and its build pointed at a deleted worktree so the tool never started: found after a phase&#x27;s pictures were wrong; guard: a render selfcheck against the record on every picture. (3) The first motion video reached me only after eight phases; guard: the review points (06).</p>
 <p>Order errors: 2. The stance built from a weapon guard&#x27;s legs without my look first (cost: one re-pose and a second still); the baseline on unreviewed reads (cost: one re-read).</p>
+</section><section id="12-orchestrator-context-discipline">
+<h2>Orchestrator context discipline (so the orchestrator never reads everything)</h2>
+<p class="meta"><b>Use for:</b> every orchestrator prompt (Fable or Opus).</p>
+<p class="meta"><b>Why:</b> this session&#x27;s orchestrator read every plan version, every review and every hand-back in full; that was most of its cost, it was slow, and it added nothing the reviewers and the human look did not already provide.</p>
+<div class="block"><button class="copy" data-target="p-12-orchestrator-context-discipline">Copy</button><pre id="p-12-orchestrator-context-discipline">You orchestrate from summaries, never from full outputs.
+- Every lane returns a fixed-form summary of at most 20 lines (the head, the numbers, pass or fail per bar, the paths, what is open) and writes everything else to its hand-back file. You read the summary only. You open a hand-back file only to settle a dispute between a reviewer and the lane, and then only the lines named.
+- Every review returns a compact table (one line per finding: id, severity, claim, evidence path, fix). You rule from that table. You never read a reviewer&#x27;s transcript or a lane&#x27;s transcript.
+- When a hand-back is long and a ruling needs more than its summary, a Sonnet &quot;digest&quot; agent condenses it to one page with the paths; you read the digest.
+- You look at pictures yourself only for the item that goes to the human (the milestone or decision image), from every view, once. Every other picture is the reviewers&#x27; job.
+- You never paste a plan, a review or a hand-back into a brief; you give the path and the section.
+- Your own rulings are short files beside the hand-back (one line per finding); the next brief points at them.
+- At every milestone, a fresh orchestrator session starts from the resume file and the rulings; the old one writes its state and stops. A context that has grown past a few hundred thousand tokens is a cost on every call after it.
+- The human reviews the output, not you: your job is the order of work, the briefs, the rulings and the records.</pre></div>
+
 </section>
 <p class="meta">Source: the Markdown files under <code>prompts/</code> in this repository; this page is built from them by <code>build.py</code>.</p>
 </main>

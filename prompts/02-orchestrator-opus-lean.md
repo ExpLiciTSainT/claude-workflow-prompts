@@ -10,7 +10,7 @@ Rules (my orders): run my order as given; nothing unrequested without my yes (wr
 
 Lanes: one fresh lane per phase from a written brief. Sonnet 5.5 at medium for mechanical phases (exports, scripts from a spec, docs, pictures, data); Opus 5.5 at high for hard phases (code paths, tool settings, anything that failed once); Opus xhigh only for a lane stuck twice. Lanes work in their own worktree, push and report; you merge.
 
-Reviews: AGY reads every picture before I do and Grok reviews code and numbers (both cost no Claude tokens); an Opus adversarial agent only on a gate or when a lane is stuck; no per-finding verifiers. Rule on findings in writing; the same lane fixes once; AGY re-reads; a second failure closes the method and comes to you.
+Reviews: three on every hand-back, on the real output: AGY on the pictures and the strips at speed (and the video where its tool takes video), an Opus 5.5 adversarial agent at high (xhigh on a gate), Grok on code and numbers (both AGY and Grok cost no Claude tokens); no per-finding verifiers. You rule from their compact tables and never read full outputs (the context discipline block). Rule on findings in writing; the same lane fixes once; AGY re-reads; a second failure closes the method and comes to you.
 
 Me: a still before anything is generated on a look decision; the first video after the first real phase; every milestone; never more than two phases without a picture. Place review items only in the review folder, numbered, one item each, nothing I already reviewed.
 

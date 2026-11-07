@@ -21,7 +21,7 @@ At every milestone the orchestrator sums the four and writes one paragraph: wher
 | Reads script: built, reviewed, fixed, re-reviewed, fixed, re-reviewed (three rounds, two fix lanes, a floor lane) | 9.0 M | 2.5 M spent, 6.5 M lost to redo | cause: reads written to a list with synthetic self-tests; a floor defect under them; fixed by a recorded corpus of approved takes |
 | Baseline built before the reads passed review (P0c) | 1.0 M | 0.5 M lost to redo | order: a later step's numbers on an unreviewed gate |
 | Build lanes P0a to P5, sources, sides, feet, pictures, window import (about 20 lanes) | 14 M | spent | the branch's state |
-| The Fable orchestrator | 59 percent of the weekly | partly wasted | reading every full output at xhigh; an Opus orchestrator on compact tables would have cost a third |
+| The Fable orchestrator | 59 percent of the weekly | partly wasted | reading every full output at xhigh; the fix is the context discipline block (summaries and compact tables only, a fresh orchestrator per milestone) and an Opus 5.5 orchestrator at high for day-to-day running |
 
 Forgot-counter: 3. (1) The renderer cannot draw the body's shapes (sparse glTF accessors): found at the face phase, after every earlier render had shown a body without its correctives; guard: the consumer check (one frame drawn with a known shape before any phase that depends on it). (2) The review renderer replayed the match instead of drawing the recorded pose, and its build pointed at a deleted worktree so the tool never started: found after a phase's pictures were wrong; guard: a render selfcheck against the record on every picture. (3) The first motion video reached me only after eight phases; guard: the review points (06).
 

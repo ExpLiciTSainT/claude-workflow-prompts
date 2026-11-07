@@ -1,6 +1,6 @@
 # Plan, then the three-model review, then the execution review
 
-Use for: any work of more than a few phases, or anything that will be reused (a pipeline, a character, a system).
+Use for: any work with 4 or more phases, anything other work will reuse (a pipeline, a character, a system), or anything where a wrong plan would redo 2 or more phases.
 Why: the reviews found gaps the planner could not see (a jump that cleared nothing, bars from invented numbers, a look decision buried under four phases); each gap found here saves rework later.
 
 ```text
