@@ -4,12 +4,12 @@ Reusable prompt blocks for running work with Claude Code and other agents (Opus,
 
 The page with copy buttons: https://explicitsaint.github.io/claude-workflow-prompts/
 
-Seventeen sections: models and effort levels, the Fable orchestrator, the lean Opus orchestrator, the plan with the three-model review, the lane brief, the review and fix loop, the human review points, the forgetting and order guard, ultracode cost control, the decision form, where each workflow fits, the token ledger, orchestrator context discipline, the director (fresh per call), the operator window, the operator for one phase, the project files and packet forms.
+Seventeen sections: models and effort levels, the Fable orchestrator, the lean Opus orchestrator, the plan with the three-model review, the lane brief, the review and fix loop, the human review points, the forgetting and order guard, ultracode cost control, the decision form, where each workflow fits, the token ledger, orchestrator context discipline, the director window (Fable), the driver window (Sonnet), the operator for one phase, the project files and packet forms.
 
 The prompts live in `prompts/*.md` (one block each, with "Use for" and "Why"); `python build.py` rebuilds `index.html` from them. Edit the Markdown, run the build, commit.
 
-## Director and operator (runs overnight with no clear)
+## Two windows: the Fable director window you drive, the Sonnet driver window (runs overnight, nothing to clear)
 
-The director (Fable 5.1) is never a window: `tools/director.py` makes one fresh headless call per decision (PLAN, RULE, PROBLEM, CHECKPOINT, REDIRECT, QUESTION, APPROVAL), assembled from the goal's folder on the share (blocks 13 to 16). One Opus 5.5 window spawns a fresh operator agent per phase; operators run lanes, reviews and chores and call the director. The files are the memory, so nothing has to be cleared. Plan and the adversarial review's rulings: `docs/director-operator-plan.md`.
+The director (Fable 5.1, xhigh) is the window the human talks to: it plans from the full inventory, writes briefs and rulings, root-causes problems, answers the human; it never runs a lane or holds a sub-agent's output (block 13). The driver (Sonnet 5.5, medium) is the second window: it spawns one fresh operator agent per phase from the director's brief and relays the 20-line packet back, deciding nothing (block 14). Operators (block 15) run the lane, the three reviews and the chores and are thrown away. The project folder (block 16) is the memory, one writer per file. The windows talk by SendMessage, one message per hand-off. Plan and the adversarial review's rulings: `docs/director-operator-plan.md`.
 
-Measured 2026-11-07: a headless call with the account's MCP connectors loaded wrote 337,435 tokens of tool schemas into the cache for a one-word answer; with `--strict-mcp-config` and an empty config (what director.py passes) the same call cost 3,177 tokens.
+`tools/director.py` (a fresh headless Fable call per decision, for a fully unattended run) is kept but is in no preset: the human's ruling is that no script calls Fable. Measured 2026-11-07: a headless call with the account's MCP connectors loaded wrote 337,435 tokens of tool schemas into the cache for a one-word answer; with `--strict-mcp-config` and an empty config it cost 3,177 tokens.

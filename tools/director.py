@@ -1,4 +1,4 @@
-"""director.py: one fresh Fable 5.1 director call, assembled from the project's files. Plain Python, no dependencies.
+"""director.py (OPTIONAL, in no preset; the human ruled that no script calls Fable): one fresh Fable 5.1 director call, assembled from the project's files. Plain Python, no dependencies.
 
 The director never lives in a window. Every decision is a new headless `claude -p` run whose context is only: the
 director block, the human's rules, the request, the vision, the plan, the resume, the operator's state, the rulings
@@ -29,7 +29,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-BLOCK = os.path.join(ROOT, "prompts", "13-director-fresh-per-call.md")
+BLOCK = os.path.join(ROOT, "prompts", "13-director-window-fable.md")  # the same constitution, read as a block
 DIRECTOR_DIR = os.path.join(os.path.expanduser("~"), ".claude-director")   # outside every project tree (F19)
 DIRECTOR_CLAUDE_MD = ("# Director call directory\n\nThis folder exists so the director runs with no project memory and no "
                       "project CLAUDE.md: tools/director.py starts each headless call here; the prompt carries everything.\n")

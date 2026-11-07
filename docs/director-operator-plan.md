@@ -110,3 +110,8 @@ Probe added after the review: the Workflow tool is NOT available inside a sub-ag
 | OM2 | put to the human | Who he talks to: the plan takes Fable out of his window; this is his decision, put in the decision form in the setup message (A: one Opus window relaying his words verbatim to Fable and Fable's answers back verbatim; B: a second, Fable window that only talks to him and writes REQUEST.md, messaging the operator window). |
 | DJ2 | noted | The proof case is the next phase in his own order, not new work; it runs only on his yes to the setup. |
 | DJ3 | accepted | The window never paraphrases his words or the director's; verbatim both ways. |
+
+
+# Ruling by the human (2026-11-07): no script calls Fable; two windows
+
+"I fear a script calling Fable 5.1. I want to control the work as I see problems ... I do not want opus driving work ... I do not want fable holding every piece of output from a sub agent ... I want a fable 5.1 window I drive from no matter what." Shape in force: the director window (Fable 5.1 xhigh, block 13) the human drives; the driver window (Sonnet 5.5 medium, block 14) that spawns a fresh operator per phase (block 15) and relays 20-line packets; files with one writer each (block 16); SendMessage between the windows. director.py is kept for a fully unattended run only, outside every preset. The adversarial review's rulings F1 to F19 and W1 carry over where they apply (fresh operator per phase, verbatim packets, rulings with ids and supersedes, VISION.md, RULES in the director's own instructions, stop-and-report on failures, workflow only from a window).

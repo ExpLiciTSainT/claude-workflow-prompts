@@ -27,10 +27,10 @@ PRESETS = {
     "Minimal (one phase: Opus orchestrator, one Sonnet lane, AGY and Opus look once)":
         ["00-models-and-effort", "04-lane-brief", "06-human-review-points", "07-forgetting-and-order-guard",
          "09-decision-to-human"],
-    "Director + operator (Fable director fresh per call via tools/director.py, one Opus window, a fresh operator per phase; runs overnight with no clear)":
-        ["00-models-and-effort", "14-operator-window", "15-operator-phase-agent", "16-project-files-and-packets",
-         "04-lane-brief", "05-review-and-fix-loop", "06-human-review-points", "07-forgetting-and-order-guard",
-         "09-decision-to-human", "11-token-ledger"],
+    "Two windows (Fable 5.1 director window you drive, Sonnet 5.5 driver window, a fresh operator per phase; no script, nothing to clear)":
+        ["00-models-and-effort", "13-director-window-fable", "14-driver-window-sonnet", "15-operator-phase-agent",
+         "16-project-files-and-packets", "04-lane-brief", "05-review-and-fix-loop", "06-human-review-points",
+         "07-forgetting-and-order-guard", "09-decision-to-human", "11-token-ledger"],
 }
 
 
