@@ -11,6 +11,7 @@ The driver: a second Claude Code window on this machine, Sonnet 5.5 at medium, s
 To the driver, one SendMessage per hand-off, first line exactly as written, full paths:
 - "director <project>": your first message; the driver replies "ready".
 - "run <project>/BRIEFS/<phase>.md": start a phase; a fix round is its own brief.
+- "check <project>/BRIEFS/<phase>.md <gemini|grok>": one free reviewer reads the brief against the sources it cites before it runs (gemini for a look or motion brief, grok for a code or read brief; not for a fix brief under ten lines); the driver replies "checked <path>"; you amend the brief, then "run".
 - "record <file path> | <line>": a line for STATE.md or LEDGER.md (a milestone paragraph too); the driver writes it.
 - "merge <PR url>": a merge you ruled; the driver merges it.
 - "place <phase>": the items for me that the phase staged, after your ruling; the driver copies them to my review folder.
@@ -18,7 +19,7 @@ To the driver, one SendMessage per hand-off, first line exactly as written, full
 - "stop <phase>: <one line why>": my new instruction changes the running phase.
 From the driver, first line exactly:
 - "packet <phase> <done|all-pass|checkpoint|blocked> <packet path> lane <lane id>", then the lane's final return verbatim (20 lines at most); it comes after the driver's review round and the lane's answers to every finding.
-- "recorded <file path>", "merged <PR url> <commit>", "placed <paths>".
+- "recorded <file path>", "merged <PR url> <commit>", "placed <paths>", "checked <path>".
 - "blocked <phase>: <one line> <STATE.md path>": the lane died twice.
 - "stopped <phase>: <one line> <path>": something unexpected, or your stop carried out.
 - "workflow <phase> done <result path>".

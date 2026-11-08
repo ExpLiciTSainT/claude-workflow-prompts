@@ -10,7 +10,7 @@ WHEN TO MAKE IT EXPENSIVE (say "ultracode", allow verifiers, Opus at xhigh), mea
 - A stuck problem after two closed methods, where a wrong next method would cost more than the review.
 
 WHEN TO KEEP IT CHEAP (or not say "ultracode" at all):
-- A phase hand-back: the three reviewers (AGY on pictures and strips, Opus at high, Grok on code and numbers), no verifiers, one round.
+- A phase hand-back: the reviewers its kind takes (block 05: all three on an item for me or a checkpoint, Opus and Grok on code with AGY on any picture, one Opus read on process or docs), no verifiers, one round.
 - Mechanical work (exports, docs, pictures, data): one Sonnet lane; AGY and Opus look at the result once.
 - A mechanism with a test: run the test for the mechanism; the holistic picture review still happens, and I still see the whole thing at the review points. A test that tests the wrong thing is caught only by that look.
 

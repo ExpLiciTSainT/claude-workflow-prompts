@@ -20,8 +20,9 @@ Written by the director window (Fable):
 Written by the driver window:
 - STATE.md: DIRECTOR (the director's address); RUNNING per phase (phase, brief, lane id, model, the lane's RUNNING.md path), cleared when the lane's final return is relayed; PROBLEM lines; any line the director sends by "record".
 - LEDGER.md: one row per phase (the lane's and each reviewer's tokens; wasted, redo, forgot from the lane's return; then, by "record" after the director's ruling, the effort columns in this order: lane kind, model, effort, blockers of its own making, verdict keep / raise / lower, block 00; a ledger header names them once); the director's milestone paragraph by "record".
-- <hand-back folder>/review_gemini.md, review_grok.md, review_opus.md (and review_gemini_2.md on changed items): the reviewers the driver spawns write them, one line per finding; the gemini and grok files open with the CLI command and the raw output's path; the gemini file names a raw that `outside_review.py verify` accepted (its stamp).
+- <hand-back folder>/review_gemini.md, review_grok.md, review_opus.md (those the brief's review line names, by the hand-back's kind, block 05; and review_gemini_2.md on changed items): the reviewers the driver spawns write them, one line per finding (a blocker names the bar it fails or the frame that shows it); the gemini and grok files open with the CLI command and the raw output's path; the gemini file names a raw that `outside_review.py verify` accepted (its stamp).
 - PACKETS/<phase>_workflow.md: a verified review's result verbatim.
+- BRIEFS/<phase>_check.md: one free reviewer's read of the brief before it runs (the director's "check"), one line per finding; the director amends the brief from it, then sends "run".
 - The review folder: the driver copies the staged items on "place", never replacing a file.
 
 Written by the phase lane:
