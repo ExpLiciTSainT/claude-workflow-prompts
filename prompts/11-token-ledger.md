@@ -9,6 +9,7 @@ Keep a ledger file beside the resume, with one writer (in two windows, the drive
 - WASTED: tokens that produced nothing kept (a review that confirmed what was known, a run on wrong settings, a lane that stalled).
 - LOST TO REDO: tokens on work that had to be redone because an earlier step was wrong or out of order; name the earlier step.
 - FORGOT: a thing that should have been checked or built earlier and was found later; its cause (consumer not checked, order wrong, plan gap) and the guard added.
+- EFFORT COLUMNS on every row beside its tokens, in this order: lane kind, model, effort, blockers of its own making (accepted blockers counted before the answer pass, not the brief's or the plan's), verdict (keep / raise / lower, by block 00's EFFORT REVIEW). They are written when the director's ruling arrives, by "record".
 At every milestone the orchestrator sums the four and writes one paragraph (through the ledger's writer): where the tokens were useful, what effort level would have done, what changes next time.
 ```
 

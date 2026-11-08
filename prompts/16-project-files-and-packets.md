@@ -19,8 +19,8 @@ Written by the director window (Fable):
 
 Written by the driver window:
 - STATE.md: DIRECTOR (the director's address); RUNNING per phase (phase, brief, lane id, model, the lane's RUNNING.md path), cleared when the lane's final return is relayed; PROBLEM lines; any line the director sends by "record".
-- LEDGER.md: one row per phase (the lane's and each reviewer's tokens; wasted, redo, forgot from the lane's return); the director's milestone paragraph by "record".
-- <hand-back folder>/review_gemini.md, review_grok.md, review_opus.md (and review_gemini_2.md on changed items): the reviewers the driver spawns write them, one line per finding; the gemini and grok files open with the CLI command and the raw output's path.
+- LEDGER.md: one row per phase (the lane's and each reviewer's tokens; wasted, redo, forgot from the lane's return; then, by "record" after the director's ruling, the effort columns in this order: lane kind, model, effort, blockers of its own making, verdict keep / raise / lower, block 00; a ledger header names them once); the director's milestone paragraph by "record".
+- <hand-back folder>/review_gemini.md, review_grok.md, review_opus.md (and review_gemini_2.md on changed items): the reviewers the driver spawns write them, one line per finding; the gemini and grok files open with the CLI command and the raw output's path; the gemini file names a raw that `outside_review.py verify` accepted (its stamp).
 - PACKETS/<phase>_workflow.md: a verified review's result verbatim.
 - The review folder: the driver copies the staged items on "place", never replacing a file.
 
@@ -28,7 +28,7 @@ Written by the phase lane:
 - <hand-back folder>/RUNNING.md: its jobs, worktree and windows before every wait; "waiting for answer" after the first return; cleared at the final return.
 - <hand-back folder>/RECORD.md: what was done, every number with the file it came from, the answer to every finding.
 - <hand-back folder>/for_review/: the items the human judges, staged, never placed by the lane.
-- PACKETS/<phase>_handback.md: INTERIM before any forced return, FINAL after the answer pass; at most 120 lines: the 20-line return, the counts per reviewer, every standing dispute one line each with file and line, the staged items, the paths, the ledger; over 120, the tables at a path and the cut logged.
+- PACKETS/<phase>_handback.md: INTERIM before any forced return, FINAL after the answer pass; at most 120 lines: the 20-line return, the counts per reviewer, one line "blockers of its own making: <n>" (the accepted blockers in the review files, counted before the answer pass; block 00), every standing dispute one line each with file and line, the staged items, the paths, the ledger; over 120, the tables at a path and the cut logged.
 - PACKETS/<phase>_problem.md: what failed (one line), evidence path, the tries, the cause, what it blocks.
 - PACKETS/<milestone>_checkpoint.md (a brief that closes a milestone): every phase's status; items ready for the human with a path per view; what remains.
 
