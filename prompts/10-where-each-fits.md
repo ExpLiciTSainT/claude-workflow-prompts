@@ -8,7 +8,7 @@ Pick the workflow by the kind of work, and say which you picked and why:
 
 1. A complicated, multi-step piece (a character, a pipeline, a system, a map): the full plan with the three-model review and the execution review (ultracode for those two reviews), then the lean workflow for the phases. A wrong plan costs every phase; a wrong phase costs one.
 
-2. Animation and motion: the lean workflow, with pictures AND strips of consecutive frames at speed from every view at every phase, AGY and Opus reading them, and me seeing the first video after the first gait phase, not after eight. Motion faults are seen, not computed.
+2. Animation and motion: the lean workflow, with pictures AND strips of consecutive frames at speed from every view at every phase, AGY and Opus reading them, and me seeing stills for every look decision early and the first video as soon as no later shared fix would change it, never after eight phases without a picture. Motion faults are seen, not computed.
 
 3. Coding (a feature, a fix): the lean workflow; tests first for the mechanism; Opus for a code path that changes behaviour (a server rule, a scheduler, a renderer), Sonnet for the rest; one Opus adversarial read on behaviour changes. The holistic look still happens on the result.
 
@@ -36,3 +36,5 @@ Pick the workflow by the kind of work, and say which you picked and why:
 - Mechanical: a clear brief and a clear end; no planning overhead.
 - Tool-driven: the tool's own way is faster, reviewable in the window, and already debugged by its vendor.
 - Failed twice: the pattern behind most wasted tokens.
+
+RETIRED in this block (mb_movement_v2 R-34): "the first video after the first gait phase".

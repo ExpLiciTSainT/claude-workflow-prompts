@@ -1,5 +1,7 @@
 # Director and operator: the setup that keeps Fable 5.1's judgement and drops its context cost (plan v1, for adversarial review)
 
+RETIRED where it differs from blocks 13 to 16 (Torvane mb_movement_v2 process_pipeline): the operator, operator-run reviews and director.py's file writes are retired; the blocks hold the shape in force.
+
 ## Joel's goal, in his words (the bar this plan is judged against)
 - "Fable 5.1 orchestrators, is the director, and the decision maker as the results are massively better than an individual opus orchestrator."
 - "The main CLI holds the total vision, strategy, story, keeping the sub agents align on their work to deliver the intended results."

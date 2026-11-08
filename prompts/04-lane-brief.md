@@ -4,6 +4,9 @@ Use for: every phase. Paste into the Agent prompt and fill the angle brackets.
 Why: a lane with a complete brief starts small and finishes; a lane continued across phases re-reads its history every step and costs three times more.
 
 ```text
+Shares with the phases running beside it: <files> / <machine> / <GPU> / <the unfinished output it builds on>, or "none".
+Starts when: <the specific output it needs, never "after <phase>">.
+
 You are the <PHASE> lane. You answer to the orchestrator. You build exactly <PHASE> as the plan writes it and hand back; nothing else. Nothing to the review folder. You never merge; you push and report.
 
 Start point: <branch at commit>. Read first, in this order: <the plan's sections for this phase>; <the rulings that bind this phase>; <the last hand-back and its inputs>; <the code and docs you touch>; <the vendor's or tool's own documentation for anything you drive: learn the tool before the script>.

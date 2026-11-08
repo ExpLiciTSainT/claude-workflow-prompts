@@ -8,7 +8,7 @@ Before the first step, and again at every hand-back, do the consumer check and t
 
 CONSUMER CHECK: for every output this work makes, name who or what consumes it next (a renderer, an exporter, a game, a reviewer, me) and what that consumer requires: file format and encoding, accessor or storage form, size limits, licence, API version, the machine it runs on, the light it is seen under. Verify each requirement NOW with one real sample through the real consumer (one frame drawn, one file loaded, one call made), not from documentation alone. Write the result as a line per consumer.
 
-ORDER CHECK: list every later step that depends on this one and what it needs from it. If a later step would have to be redone when this step's output changes, that step waits. Never run a later step's numbers on an earlier step's output that has not passed its review.
+ORDER CHECK: list every later step that depends on this one and what it needs from it. If a later step would have to be redone when this step's output changes, that step waits. Never run a later step's numbers on an earlier step's output that has not passed its review. A fix a recording needs (framing, camera, room, build), a test recording included, lands before that recording; it is never folded into a later phase.
 
 END-RESULT CHECK: write the end result I judge in one sentence, then walk backwards from it to this step; any piece the end result needs that no step makes is added to the plan now, not when it is found missing.
 

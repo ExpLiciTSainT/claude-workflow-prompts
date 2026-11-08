@@ -1,4 +1,5 @@
-"""director.py (OPTIONAL, in no preset; the human ruled that no script calls Fable): one fresh Fable 5.1 director call, assembled from the project's files. Plain Python, no dependencies.
+"""director.py (OPTIONAL, in no preset; the human ruled that no script calls Fable; RETIRED for the two windows: it writes
+LEDGER.md and assumes an operator, against blocks 13 to 16): one fresh Fable 5.1 director call, assembled from the project's files. Plain Python, no dependencies.
 
 The director never lives in a window. Every decision is a new headless `claude -p` run whose context is only: the
 director block, the human's rules, the request, the vision, the plan, the resume, the operator's state, the rulings
