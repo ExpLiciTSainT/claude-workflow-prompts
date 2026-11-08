@@ -18,5 +18,5 @@ THE NEWEST FAMILY, EVERY TIME:
 - In every agent brief: name the model by family alias (opus, sonnet, haiku), which resolves to the newest; never an old dated ID.
 - Every lane's hand-back states the model it ran on, and the orchestrator checks it: a lane that reports anything but the 5 family is a defect and its work is not trusted until re-run.
 
-RULES: one lane per phase, a fresh lane at each phase boundary (a lane re-reads its whole history every step); a lane over about 0.7 M tokens is split; verifiers only on blockers; nothing at xhigh that a written brief can make medium.
+RULES: one lane per phase, a fresh lane at each phase boundary (a lane re-reads its whole history every step); a lane over about 0.7 M tokens is split; verifiers only in a verified round the orchestrator rules (block 08); Opus 5.5 high for a phase that changes the product's code or a shared script another phase reads, Sonnet 5.5 medium otherwise, Opus when both apply; nothing at xhigh that a written brief can make medium.
 ```

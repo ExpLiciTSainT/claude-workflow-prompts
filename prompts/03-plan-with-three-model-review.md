@@ -16,10 +16,13 @@ Make the plan before any step runs, and get it reviewed before any step runs.
    G. Methods already failed twice (never repeated).
    H. Open questions for the reviewers.
    No dates, no durations, plain actions, rule IDs.
+   Every numeric bar carries its derivation (a known-good measurement or the anatomy); every time I named in a reviewed video carries the move from that video's index; every bar is the magnitude it asserts on the frames it names, run on the data that will be judged; my order runs as I gave it unless a named dependency would redo something I approved.
 
-2. Review it with three independent models on ONE packet (my words unfiltered, the state, the record paths, a read-only checkout): AGY and Grok (free), an Opus adversarial agent (high). Each returns findings in one schema: id, severity (blocker, major, minor), section, claim, evidence (file and line or a record), fix; plus "what I asked for that the plan omits" and "what the plan decides for me that is mine". Verify blockers only, with one Sonnet verifier each. I (the orchestrator) rule in writing: accepted with the change, disputed with the file and line, deferred with why. The planner writes the next version answering every finding id.
+2. Review it with three independent models on ONE packet (my words unfiltered, the state, the record paths, a read-only checkout), spawned from the top level in one message, never from inside a lane (block 14): AGY by the agy command (its command line and output path in its return, or it is refused), Grok, an Opus adversarial agent (high). Each returns findings in one schema: id, severity (blocker, major, minor), section, claim, evidence (file and line or a record), fix; plus "what I asked for that the plan omits" and "what the plan decides for me that is mine". No verifiers: a reviewer's figure is a pointer the planner measures on the file before accepting or disputing it; a verified round (block 08) only when the orchestrator rules the plan is a gate. The planner answers every finding id (accepted with the change, disputed at file and line) and writes the next version; I (the orchestrator) rule only the disputes still standing.
 
-3. The same three review HOW it is executed and reviewed (lane sizes, steps, reads, pictures, review cadence, the expected outcome per phase). Rule, correct, then proceed.
+3. The same three review HOW it is executed and reviewed (lane sizes, steps, reads, pictures, review cadence, the expected outcome per phase, and each fix's method before it is coded). Each round is a fresh planner lane started from the dispositions on disk. Rule, correct, then proceed.
 
 4. Show me the plan's one-page summary and every look decision as a still before anything is generated on it.
 ```
+
+RETIRED in this block (mb_movement_v2 R-45, R-53): "Verify blockers only, with one Sonnet verifier each" as the default (the planner measures; a verified round is block 08's, by the orchestrator's ruling).

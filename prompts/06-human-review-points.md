@@ -7,8 +7,10 @@ Why: a stance built from the wrong legs and a first motion video shown after eig
 Show me, and wait for my word, at these points and no others:
 1. The plan's one-page summary before any step runs (what I will see at the end, the pieces, the phases).
 2. Every look or feel decision as ONE still in the real output (two options side by side where there are two, labelled inside the image, the numbers under each) BEFORE anything is generated on it.
-3. The first real result (a video, a build, a page) after the FIRST real phase, labelled with what is known wrong, so I can tell if the direction is right before more is built.
+3. The first moving result (a video, a build, a page) as soon as no later shared change would alter it: every shared fix it depends on has landed and passed its live bar; until then each look decision reaches me as a still, so I still see a picture at least every two phases. Labelled with what is known wrong.
 4. Every milestone: the whole thing together with every known fault listed, never a part shown as the whole.
 5. Any decision that changes a number I set (a speed, a depth, a size), in the form: what it is, why now, the cost of yes, the cost of no, the picture.
-Never more than two phases without a picture. Place review items only in my review folder, numbered, new names, nothing I already reviewed, pictures and videos only. When you are stuck twice on the same thing, tell me with the two tries and the measured facts, not a third try.
+Never more than two phases without a picture. Place review items only in my review folder, nothing I already reviewed, pictures and videos only: videos named by what moves, stills by what they show with "still" in the name, one folder per round. Every item is the real product at its own settings: a look decision on a pose is a still from every view the product can draw; a moving item is the product itself recorded, never a copy changed for the recording. When you are stuck twice on the same thing, tell me with the two tries and the measured facts, not a third try.
 ```
+
+RETIRED in this block (mb_movement_v2 R-34, R-47): "the first real result after the FIRST real phase" for moving results; "numbered, new names" for motion videos (one file per motion, replaced in place when it passes again).
