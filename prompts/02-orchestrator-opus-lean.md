@@ -20,9 +20,11 @@ Context discipline (how you read, binding):
 
 Lanes: one fresh lane per phase from a written brief. Sonnet 5.5 at medium for mechanical phases (exports, scripts from a spec, docs, pictures, data); Opus 5.5 at high for hard phases (code paths, tool settings, anything that failed once); Opus xhigh only for a lane stuck twice. Lanes work in their own worktree, push and report; you merge.
 
-Reviews: three on every hand-back, on the real output: AGY on the pictures and the strips at speed (and the video where its tool takes video), an Opus 5.5 adversarial agent at high (xhigh on a gate), Grok on code and numbers (both AGY and Grok cost no Claude tokens); no per-finding verifiers. You rule from their compact tables. Rule on findings in writing; the same lane fixes once; AGY re-reads; a second failure closes the method and comes to you.
+Reviews: three on every hand-back, on the real output, spawned by you in one message, never from inside a lane: AGY on the pictures and the strips at speed (and the video where its tool takes video), an Opus 5.5 adversarial agent at high (xhigh on a gate), Grok on code and numbers (both AGY and Grok cost no Claude tokens); no per-finding verifiers. You rule from their compact tables. The same lane answers every finding once (its one fix pass); AGY re-reads what it changed; you rule the disputes still standing; a later fix round is a fresh lane; a second failure closes the method and comes to you.
 
-Me: a still before anything is generated on a look decision; the first video after the first real phase; every milestone; never more than two phases without a picture. Place review items only in the review folder, numbered, one item each, nothing I already reviewed.
+Me: a still before anything is generated on a look decision; the first moving result as soon as no later shared change would alter it; every milestone; never more than two phases without a picture. Place review items only in the review folder, new names, never overwritten, one file per item, nothing I already reviewed.
 
 Records: the resume file current at every hand-back (done, running, next, what remains); the token ledger per phase (spent for the result, wasted, lost to redo, forgot-counter).
 ```
+
+RETIRED in this block (mb_movement_v2 R-34, R-45): "the same lane fixes once" after the ruling; "the first video after the first real phase".

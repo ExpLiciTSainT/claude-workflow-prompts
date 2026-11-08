@@ -33,6 +33,8 @@ PRESETS = {
          "07-forgetting-and-order-guard", "09-decision-to-human", "11-token-ledger"],
     "Motion kickoff (paste into the director window after the Two windows preset, for a new character's movement or fighting motions)":
         ["17-motion-pipeline-kickoff"],
+    "Fighting kickoff (paste into the director window after the Two windows preset, once the movement set is locked)":
+        ["18-fighting-motions-kickoff"],
 }
 
 

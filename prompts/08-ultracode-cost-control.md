@@ -4,7 +4,7 @@ Use for: deciding whether to say "ultracode" at all, and how to shape the workfl
 Why: this session's reviews cost 2 to 4 million tokens a round; two thirds of that was per-finding verifiers that mostly confirmed the reviewers. The same reviewers without verifiers cost under 1 million and found the same defects.
 
 ```text
-WHEN TO MAKE IT EXPENSIVE (say "ultracode", allow verifiers, Opus at xhigh), measured, not felt:
+WHEN TO MAKE IT EXPENSIVE (say "ultracode", allow verifiers, Opus at xhigh), measured, not felt, and only by the orchestrator's ruling (in two windows, the director's "workflow"); every other review has no verifiers and the lane measures:
 - A plan with 4 or more phases, or one whose output other work will reuse (a pipeline, a method for the next character, a system), or where a wrong plan would redo 2 or more phases. Review it twice: the plan, then its execution method.
 - A gate: anything later phases trust without re-checking (a read script, a server check, a corpus, a schema, an exporter). Build it test-first on recorded known-goods and known-bads, then review it as a gate.
 - A stuck problem after two closed methods, where a wrong next method would cost more than the review.
