@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "index.html")
 
 PRESETS = {
-    "Ultracode (a plan or a gate: Fable orchestrator, three-model reviews with verifiers on blockers)":
+    "Ultracode (a plan or a gate: Fable orchestrator, the plan review with verifiers on blockers)":
         ["00-models-and-effort", "01-orchestrator-fable", "03-plan-with-three-model-review", "04-lane-brief",
          "05-review-and-fix-loop", "06-human-review-points", "07-forgetting-and-order-guard",
          "08-ultracode-cost-control", "09-decision-to-human", "11-token-ledger"],

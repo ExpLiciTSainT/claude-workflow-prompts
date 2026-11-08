@@ -6,7 +6,7 @@ Why: the cost that matters is rework, not tokens; the review depth should match 
 ```text
 Pick the workflow by the kind of work, and say which you picked and why:
 
-1. A complicated, multi-step piece (a character, a pipeline, a system, a map): the full plan with the three-model review and the execution review (ultracode for those two reviews), then the lean workflow for the phases. A wrong plan costs every phase; a wrong phase costs one.
+1. A complicated, multi-step piece (a character, a pipeline, a system, a map): the full plan with the plan review (Opus and Grok, AGY on its pictures) and the execution review (ultracode for those two reviews), then the lean workflow for the phases. A wrong plan costs every phase; a wrong phase costs one.
 
 2. Animation and motion: the lean workflow, with pictures AND strips of consecutive frames at speed from every view at every phase, AGY and Opus reading them, and me seeing stills for every look decision early and the first video as soon as no later shared fix would change it, never after eight phases without a picture. Motion faults are seen, not computed.
 

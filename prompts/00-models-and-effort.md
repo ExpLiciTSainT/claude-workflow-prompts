@@ -11,7 +11,7 @@ Opus 5.5 (claude-opus-5-5), high       Day-to-day orchestrator; hard lanes (code
 Opus 5.5, xhigh                        Writing a plan; a lane stuck twice; building a gate.
 Sonnet 5.5 (claude-sonnet-5-5), medium Mechanical lanes: exports, scripts from a spec, docs, pictures, data tables, digests, cleanup with a log.
 Haiku 5.5 (claude-haiku-5-5), low      Small bounded tasks: a file move, a log line, a list from a folder.
-AGY (Gemini) and Grok                  Reviewers first and often: your own subscriptions, no Claude tokens. AGY reads pictures and frame strips; Grok reads code and numbers (pictures only where its CLI accepts images: check once and record).
+AGY (Gemini) and Grok                  Reviewers first and often: your own subscriptions, no Claude tokens. AGY reads pictures and frame strips; Grok reads code and numbers (pictures only where its CLI accepts images: check once and record). AGY is on every picture and motion that reaches me, and its visual finding is never closed on Opus's word (the frame beside any dispute); neither reads a process or docs packet (one Opus read does; block 05).
 
 THE NEWEST FAMILY, EVERY TIME:
 - At the start of a session: /model shows the model; it must be the Claude 5 family (Fable 5.1, Opus 5.5, Sonnet 5.5, Haiku 5.5). If it is not, set it before anything runs.
