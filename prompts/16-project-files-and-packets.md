@@ -19,7 +19,7 @@ Written by the director window (Fable):
 
 Written by the driver window:
 - STATE.md: DIRECTOR (the director's address); RUNNING per phase (phase, brief, lane id, model, the lane's RUNNING.md path), cleared when the lane's final return is relayed; PROBLEM lines; any line the director sends by "record".
-- LEDGER.md: one row per phase (the lane's and each reviewer's tokens; wasted, redo, forgot from the lane's return); the director's milestone paragraph by "record".
+- LEDGER.md: one row per phase (the lane's and each reviewer's tokens; wasted, redo, forgot from the lane's return; then the effort columns in this order: model, effort, blockers of its own making, verdict keep / raise / lower, block 00); the director's milestone paragraph by "record".
 - <hand-back folder>/review_gemini.md, review_grok.md, review_opus.md (and review_gemini_2.md on changed items): the reviewers the driver spawns write them, one line per finding; the gemini and grok files open with the CLI command and the raw output's path.
 - PACKETS/<phase>_workflow.md: a verified review's result verbatim.
 - The review folder: the driver copies the staged items on "place", never replacing a file.
