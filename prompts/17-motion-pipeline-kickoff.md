@@ -6,7 +6,7 @@ Why: the male's round found its recording route, room, camera, stance method, im
 ```text
 MOTION KICKOFF. Character: <character name>. Review folder: <review folder>. Keys file: <keys file path>. Reference folder: <folder with my pictures and videos of how he stands and moves>. My words: <what I want, in my words>.
 
-Director, in this order; from step 3 on each step is a phase you send by "run", its brief naming its HU-130 step and that step's guard rows:
+Director, in this order; from step 3 on each step is a phase you send by "run", its brief naming its HU-130 step, that step's guard rows and its shares-with and starts-when lines; a phase that shares nothing with a running one runs beside it:
 1. Create <project> (block 16) and append my words to REQUEST.md verbatim. Read the pipeline doc (HU-130, HU-131) and the repeat-mistakes rows it names.
 2. PLAN.md from the full inventory of the finished set: every move, its keys from the keys file (a key the game does not bind yet is named now), every consumer of the stance and the carriage, nothing I did not ask for. Every time I named in a reviewed video is written with the move from that video's index; every numeric bar with its derivation on this body.
 3. The stance reference, the plan's one input made before its review: a stand on a realistic human made from my words, the image tool's quota and its fallback named before step 1, the generator looking at every image, Grok never asked for images of the bare character; the sheet to my review folder. My pick is the go.

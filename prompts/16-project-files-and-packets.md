@@ -9,9 +9,9 @@ Create <project>/ before the first brief. One writer per file; a line for a file
 Written by the director window (Fable):
 - REQUEST.md: the human's goal and every later instruction, verbatim, appended only.
 - VISION.md (one page): strategy, the story so far, what the human is happy with and not, reliability seen per lane, reviewer and tool.
-- PLAN.md: the end result the human judges; the FULL INVENTORY of the finished result mapped to phases; the dependency order (a phase ahead of the human's order carries its dependency line); milestones; pre-rulings ("on an all-pass proceed to <phase>"); each next phase "hangs on the verdict" or "free of rework and inside the order"; out of scope; methods already failed twice.
+- PLAN.md: the end result the human judges; the FULL INVENTORY of the finished result mapped to phases; the order table with a "starts after" column naming an output, never a phase (a phase ahead of the human's order carries its dependency line); milestones; pre-rulings ("on an all-pass proceed to <phase>"); each next phase "hangs on the verdict" or "free of rework and inside the order"; out of scope; methods already failed twice.
 - RESUME.md: START HERE, the pipeline step of each phase, done, running, next, what remains, decisions waiting on the human.
-- BRIEFS/<phase>.md: the fields of block 13's brief, the pipeline step, its guard rows and the lane line included.
+- BRIEFS/<phase>.md: the fields of block 13's brief, the pipeline step, its guard rows and the lane line included; its header's two lines first: "shares with the phases running beside it: files / machine / GPU / the unfinished output it builds on" and "starts when: <the specific output it needs>".
 - RULINGS/<phase>.md: `R-<n> | ruling | because reason`; a change says `supersedes R-<n>`.
 - LESSONS.md: one line per lesson: cause category, what was missed, the check added, where it now lives; a lesson a later ruling retires is marked RETIRED on its line.
 - FOR_JOEL/POINTERS.md: at a checkpoint, one line per item: ATTENTION NEEDED, the full path, the one thing to do; decisions in block 09's form.
